@@ -191,21 +191,24 @@ jobs:
           TAG_NAME="${{ steps.prep_release.outputs.tag_name }}"
           TITLE="${{ steps.prep_release.outputs.release_title }}"
 
-          NOTES="### 📱 Debug APK Build #${GITHUB_RUN_NUMBER}
-
-This is an **automatically generated debug APK** built by **GitHub Actions**.
-
-- **Workflow Run Number:** #${GITHUB_RUN_NUMBER}
-- **Run Attempt:** ${GITHUB_RUN_ATTEMPT}
-- **Source Commit SHA:** \`${GITHUB_SHA}\`
-- **Intended Purpose:** Testing and verification
-- **Notice:** Not a Play Store production release; signed with a temporary debug keystore.
-
-Directly download the APK file from the **Assets** section below to install on your Android device."
+          NOTES_FILE="${RUNNER_TEMP:-/tmp}/release_notes.md"
+          {
+            echo "### 📱 Debug APK Build #${GITHUB_RUN_NUMBER}"
+            echo ""
+            echo "This is an **automatically generated debug APK** built by **GitHub Actions**."
+            echo ""
+            echo "- **Workflow Run Number:** #${GITHUB_RUN_NUMBER}"
+            echo "- **Run Attempt:** ${GITHUB_RUN_ATTEMPT}"
+            echo "- **Source Commit SHA:** \`${GITHUB_SHA}\`"
+            echo "- **Intended Purpose:** Testing and verification"
+            echo "- **Notice:** Not a Play Store production release; signed with a temporary debug keystore."
+            echo ""
+            echo "Directly download the APK file from the **Assets** section below to install on your Android device."
+          } > "$NOTES_FILE"
 
           gh release create "$TAG_NAME" "$ASSET_PATH" \
             --title "$TITLE" \
-            --notes "$NOTES" \
+            --notes-file "$NOTES_FILE" \
             --target "$GITHUB_SHA" \
             --latest
 
