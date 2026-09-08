@@ -97,7 +97,12 @@ jobs:
       - name: Build Android Debug APK
         working-directory: android
         run: |
-          gradle :app:assembleDebug --stacktrace --no-daemon
+          chmod +x ./gradlew || true
+          if [ -x ./gradlew ]; then
+            ./gradlew :app:assembleDebug --stacktrace --no-daemon
+          else
+            gradle :app:assembleDebug --stacktrace --no-daemon
+          fi
 
       - name: Locate and verify debug APK
         id: verify_apk
