@@ -1,0 +1,24 @@
+{
+  "name": "Alisha - Voice AI Assistant by Rauf",
+  "short_name": "Alisha AI",
+  "description": "Real-time, voice-to-voice AI companion Alisha (Hinata voice) developed by Rauf powered by Gemini 3.1 Flash Live streaming pipeline.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#f43f5e",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

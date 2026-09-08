@@ -1,0 +1,6 @@
+{
+  "name": "Vibe - Voice AI Assistant",
+  "description": "Real-time, voice-to-voice AI companion Alisha (Hinata voice) developed by Rauf powered by Gemini 3.1 Flash Live streaming pipeline.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
